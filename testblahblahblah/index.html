@@ -1,17 +1,37 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover' />
-    <meta charset='utf-8'>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <link rel="manifest" href="manifest.json">
-    <style></style>
-    <title>testblahblahblah</title>
-    <script src="playcanvas-stable.min.js"></script>
-    <script src="__settings__.js"></script>
+    <meta charset="utf-8">
+    <title>My PlayCanvas Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/deustch1/eagle-craft-cdn@main/testblahblahblah/styles.css">
+    <style>
+        body { margin: 0; padding: 0; }
+        #application-canvas { width: 100%; height: 100%; }
+    </style>
+    <!-- Load Engine from CDN -->
+    <script src="https://code.playcanvas.com/playcanvas-latest.min.js"></script>
 </head>
 <body>
-    <script src="__start__.js"></script>
-    <script src="__loading__.js"></script>
+    <canvas id="application-canvas"></canvas>
+    
+    <!-- Load Game Files from CDN -->
+    <script src="https://cdn.jsdelivr.net/gh/deustch1/eagle-craft-cdn@main/testblahblahblah/__settings__.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/deustch1/eagle-craft-cdn@main/testblahblahblah/__loading__.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/deustch1/eagle-craft-cdn@main/testblahblahblah/playcanvas-stable.min.js"></script>
+    
+    <script>
+        // Initialize Application
+        var canvas = document.getElementById('application-canvas');
+        var app = new pc.Application(canvas);
+        app.start();
+        
+        // Load Scene
+        var url = "https://cdn.jsdelivr.net/gh/deustch1/eagle-craft-cdn@main/testblahblahblah/" + CONFIG_FILENAME;
+        pc.app.loadScene(url, function (err, scene) {
+            app.start();
+        });
+    </script>
 </body>
 </html>
+
